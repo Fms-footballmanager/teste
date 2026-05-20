@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactical Football Manager - IFMA Edition</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.js"></script>
+
+    <!-- Ordem de carregamento importa! -->
+    <script src="utils/MathHelpers.js"></script>
+    <script src="utils/GameConfig.js"></script>
+    <script src="entities/PlayerStates.js"></script>
+    <script src="entities/Player.js"></script>
+    <script src="systems/ZoneSystem.js"></script>
+    <script src="systems/DefenseSystem.js"></script>
+    <script src="systems/MovementSystem.js"></script>
+    <script src="systems/DecisionSystem.js"></script>
+    <script src="systems/RenderSystem.js"></script>
+    <script src="systems/BallControlSystem.js"></script>
+    <script src="systems/ShootingSystem.js"></script>
+    <script src="scenes/MainMenuScene.js"></script>
+    <script src="scenes/SettingsScene.js"></script>
+    <script src="scenes/GameScene.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        #game-container {
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 1200,
+            height: 800,
+            parent: 'game-container',
+            backgroundColor: '#1a5f2e',
+            physics: {
+                default: 'arcade',
+                arcade: { gravity: { y: 0 }, debug: false }
+            },
+            scene: [MainMenuScene, SettingsScene, GameScene]
+        };
+        const game = new Phaser.Game(config);
+        console.log('🎮 Tactical Football Manager - IFMA Edition');
+    </script>
+</body>
+</html>
